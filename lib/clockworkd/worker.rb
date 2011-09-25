@@ -70,7 +70,12 @@ module Clockworkd
 
       to_run.each do |event|
         log "Triggering #{event} with cronline #{event.cronline} and next time: #{event.next_time}"
-        event.run(t)
+        begin
+          event.run(t)
+        rescue Exception => e
+          log "Unable to execute #{event} with error: #{e.to_s}", Logger::ERROR
+          raise e
+        end
       end
 
       to_run

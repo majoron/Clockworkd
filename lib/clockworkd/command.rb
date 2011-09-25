@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'daemons'
 require 'optparse'
+require 'logger'
 
 module Clockworkd
   class Command

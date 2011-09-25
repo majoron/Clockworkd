@@ -24,7 +24,7 @@ module Clockworkd
 
     def run(t)
       eval(@block)
-    rescue => e
+    rescue Exception => e
       raise e
     end
 
