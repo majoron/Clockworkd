@@ -2,6 +2,8 @@ echo off
 
 Rem: set path 
 SET PATH=
+SET PATH=%PATH%;D:/Binutils/Ruby187/bin
+SET PATH=%PATH%;C:/Binutils/Ruby187/bin
 SET PATH=%PATH%;D:/Binutils/Ruby192/bin
 SET PATH=%PATH%;C:/Binutils/Ruby192/bin
 SET PATH=%PATH%;D:/Binutils/Ruby-186-27/bin

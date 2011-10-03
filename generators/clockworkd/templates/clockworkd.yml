@@ -1,0 +1,14 @@
+
+# Run job every day at 1:59: 59 1 * * *
+# Run job every two minute: */2 * * * *
+clear_sesssion_job:
+  cron: "59 1 * * *"
+  block: Delayed::Job.enqueue ClearSessionsJob.new
+  description: "This job clear sessions table"
+
+# Run job every day at 4:59: 59 4 * * *
+# Run job every two minute: */2 * * * *
+clear_job_reports_job:
+  cron: "59 4 * * *"
+  block: Delayed::Job.enqueue ClearJobReportsJob.new
+  description: "This job clear job report table"
