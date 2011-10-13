@@ -44,6 +44,8 @@ module Clockworkd
     end
 
     def daemonize
+      Clockworkd::Worker.before_fork
+
       ObjectSpace.each_object(File) do |file|
         @files_to_reopen << file unless file.closed?
       end
@@ -69,11 +71,14 @@ module Clockworkd
         begin
           file.reopen file.path, "a+"
           file.sync = true
-        rescue ::Exception
+        rescue ::Exception => e
+          raise e
         end
       end
 
       Clockworkd::Worker.logger = Logger.new(File.join(Rails.root, 'log', 'clockworkd.log'))
+      Clockworkd::Worker.after_fork
+
       Clockworkd::Worker.new(@options).run
     rescue => e
       Rails.logger.fatal e

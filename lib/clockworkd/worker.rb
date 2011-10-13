@@ -23,6 +23,16 @@ module Clockworkd
       self.class.sleep_delay = options[:sleep_delay] if options.has_key?(:sleep_delay)
     end
 
+    # Hook method that is called before a new worker is forked
+    def self.before_fork
+      ::ActiveRecord::Base.clear_all_connections!
+    end
+
+    # Hook method that is called after a new worker is forked
+    def self.after_fork
+      ::ActiveRecord::Base.establish_connection
+    end
+
     # Every worker has a unique name which by default is the pid of the process. There are some
     # advantages to overriding this with something which survives worker retarts:  Workers can#
     # safely resume working on tasks which are locked by themselves. The worker will assume that
