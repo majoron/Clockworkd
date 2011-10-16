@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
     "README"
   ]
   s.files = Dir.glob('**/*') - Dir.glob('distrib/**/*') - Dir.glob('lib/api/**/*') - Dir.glob('doc/*.xpr')
-  s.homepage = %q{http://github.com/arufanov/clockworkd}
+  s.homepage = %q{http://www.majoron.com/project/rbundle/clockworkd}
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{clockworkd}
   s.rubygems_version = %q{1.5.0}
