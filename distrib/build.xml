@@ -115,7 +115,7 @@
 	<target name="build-windows-gem-packages" if="isWindows">
 		<exec executable="gem.bat" dir="${package.path}" failonerror="true">
 			<arg value="build"/>
-			<arg value="clockworkd.gemspec"/>
+			<arg value="${gemspec.name}.gemspec"/>
 		</exec>
 		<move todir="${output.dir}">
 			<fileset dir="${package.path}" defaultexcludes="yes">
@@ -126,7 +126,7 @@
 	<target name="build-unix-gem-packages" if="isUnixLike">
 		<exec executable="gem" dir="${package.path}" failonerror="true">
 			<arg value="build"/>
-			<arg value="clockworkd.gemspec"/>
+			<arg value="${gemspec.name}.gemspec"/>
 		</exec>
 		<move todir="${output.dir}">
 			<fileset dir="${package.path}" defaultexcludes="yes">
